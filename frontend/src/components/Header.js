@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Header = ({ title, setTitle, exportShapes, importShapes }) => {
+const Header = ({ title, setTitle, username, setUsername, saveToServer, loadFromServer }) => {
   return (
     <div className="header">
       <input
@@ -9,17 +9,15 @@ const Header = ({ title, setTitle, exportShapes, importShapes }) => {
         onChange={(e) => setTitle(e.target.value)}
         placeholder="Painting Title"
       />
-      <button onClick={exportShapes}>Export</button>
-      <label for="file-upload">
-        Import
-      </label>
-      <input
-        id="file-upload"
-        type="file"
-        accept=".json"
-        onChange={importShapes}
-        style={{ display: 'none' }}
-      />
+      
+      <select value={username} onChange={(e) => setUsername(e.target.value)}>
+        <option value="alice">alice</option>
+        <option value="bob">bob</option>
+      </select>
+
+      <button onClick={saveToServer}>Save to Server</button>
+      <button onClick={loadFromServer}>Load from Server</button>
+      
     </div>
   );
 };
